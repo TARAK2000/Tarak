@@ -1,0 +1,385 @@
+PROGRAMM NO 7
+#include<iostream>
+using namespace std;
+class Rectangle
+{
+private:
+float length;
+float width;
+public:
+void setlength(float);
+void setwidth(float);
+float perimeter();
+float area();
+void show();
+int sameArea(Rectangle);
+};
+
+
+void Rectangle::setlength(float len)
+{
+length = L;
+}
+
+void Rectangle::setwidth(float wid)
+{
+width = W;
+}
+
+float Rectangle::perimeter()
+{
+return (2 * length + 2 * width);
+}
+
+float Rectangle::area()
+{
+return length * width;
+}
+
+void Rectangle::show()
+{
+cout << "Length: " << length << " Width: " << width;
+}
+
+int Rectangle::sameArea(Rectangle other)
+{
+float areaf = length * width;
+float areas = other.length * other.width;
+if (areaf == areas)
+return 1;
+return 0;
+}
+
+int main()
+{
+Rectangle first;
+Rectangle second;
+first.setlength(5);
+first.setwidth(2.5);
+second.setlength(5);
+second.setwidth(18.9);
+cout << "First rectangle: ";
+first.show();
+cout << endl << "Area: " << first.area() << "Perimeter: " << first.perimeter() << endl << endl;
+cout << "Second rectangle: ";
+second.show();
+cout << endl << "Area: " << second.area() << "Perimeter: " << second.perimeter() << endl << endl;
+if (first.sameArea(second))
+cout << "Rectangles have the same area\n";
+else
+cout << "Rectangles do not have the same area\n";
+first.setlength(15);
+first.setwidth(6.3);
+cout << "First rectangle: ";
+first.show();
+cout << endl << "Area: " << first.area() << "Perimeter: "<< first.perimeter() << endl << endl;
+cout << "Second rectangle: ";
+second.show();
+cout << endl << "Area: " << second.area() << "Perimeter: "<< second.perimeter() << endl << endl;
+if (first.sameArea(second))
+cout << "Rectangles have the same area\n";
+else
+cout << "Rectangles do not have the same area\n";
+
+return 0;
+}
+
+PROGRAMM NO 11
+#include<iostream>
+#include<fstream>
+using namespace std;
+
+void countwords()
+{
+ifstream fin;
+fin.open("out.txt");
+char word[30];
+int count=0;
+while(!fin.eof())
+{
+fin>>word;
+count++;
+}
+cout<<"Number of words in file are "<<count;
+fin.close();
+}
+int main()
+{
+ofstream fout;
+fout.open("NOTES.TXT");
+for(int i=1;i<=100;i++)
+fout<<i<<endl;
+fout.close();
+return 0;
+}
+
+PROGRAMM NO 6
+#include<iostream>
+#include<iomanip>
+using namespace std;
+class list
+{
+	int i;
+	public:
+		struct list1
+		{
+			string item_name;
+			double item_code;
+			float cost;
+		}l[10];
+		void get_data()
+		{
+			cout<<"Enter How many number of items :";
+			cin>>i;
+			
+			cout<<"Enter item details in the form of\nName of item\nItem Code\nItem Cost\n";
+			for(int j=0;j<i;j++)
+			{
+				cin>>l[j].item_name;
+				cin>>l[j].item_code;
+				cin>>l[j].cost;
+				cout<<"-----------------"<<endl;
+			}
+		}
+		void print()
+		{
+			cout.width(20);
+			cout<<"NAME";
+			cout.width(16);
+			cout<<"CODE";
+			cout.width(16);
+			cout<<"COST"<<endl;
+			cout<<"-------------------------------------------------------------------------------------------\n";
+			for(int j=0;j<i;j++)
+			{
+				cout.width(20);
+				cout<<l[j].item_name;
+				cout.width(16);
+				cout<<l[j].item_code;
+				cout.width(16);
+				cout.precision(2);
+				cout<<l[j].cost<<endl;
+			}
+		}
+};
+int main()
+{
+	list li;
+	li.get_data();
+	li.print();
+}
+
+PROGRAMM NO 2
+#include <iostream>
+using namespace std;
+class student
+{
+	public:
+		virtual void getdata()=0;
+		virtual void display()=0;
+	};
+	class engeinnering:public student
+	{
+		public:
+		int r;
+		char n[10];
+		public:
+			void getdata()
+			{
+                cout<<"faculty->engeineering"<<endl;
+				cout<<"enter name";
+				cin>>n;
+				cout<<"enter roll";
+				cin>>r;
+				
+			}
+			void display()
+			{
+				cout<<"name="<<n<<endl;
+				cout<<"roll no="<<r<<endl;
+				
+			}
+	};
+	class medicine:public student
+	{
+		public:
+		int r;
+	    char n[10];
+			void getdata()
+			{
+				cout<<"faculty->medicine"<<endl;
+				cout<<"enter name";
+				cin>>n;
+				cout<<"enter roll";
+				cin>>r;
+				
+			}
+			void display()
+			{
+				cout<<"name="<<n<<endl;
+				cout<<"roll no="<<r<<endl;
+				
+			}
+		
+	};
+	class science:public student{
+    public:
+	int r;
+    char n[10];
+		void getdata()
+		{
+			cout<<"faculty->science"<<endl;
+			cout<<"enter name";
+			cin>>n;
+			cout<<"enter roll no";
+			cin>>r;
+			
+		}
+		void display()
+		{
+			cout<<"name="<<n<<endl;
+			cout<<"roll no="<<r<<endl;
+					
+			}
+		};
+		int main()
+		{
+		student *p;
+		engeinnering e;
+		medicine m;
+		science s;
+		p=&e;
+		p->getdata();
+		p->display();
+		
+		p=&m;
+		p->getdata();
+		p->display();
+		
+		p=&s;
+		p->getdata();
+		p->display();
+		return 0;
+}
+
+PROGRAMM NO 3
+#include<iostream>
+using namespace std;
+class TEST
+{
+  private:
+int TestCode;
+char Description[30];
+int NoCandidate;
+int CenterReqd;
+int CALCNTR()
+{
+return NoCandidate/100+1;
+}
+  public:
+void SCHEDULE();
+void DISPTEST();
+};
+void TEST::SCHEDULE()
+{
+cout<<"Enter Test code ";
+cin>> TestCode;
+cout<<"Enter description ";
+cin>>(Description);
+cout<< "Enter no of candidates ";
+cin>>NoCandidate;
+CenterReqd=CALCNTR();
+}
+void TEST :: DISPTEST()
+{
+cout<<"Test code "<<TestCode<<"\nDescripton "<<Description<<"\nNo of candidate "
+<<NoCandidate<<"\nCenter required "<<CenterReqd;
+}
+int main ()
+{
+TEST obj;
+obj.SCHEDULE();
+obj.DISPTEST();
+return 0;
+}
+
+PROGRAMM NO 2
+#include<iostream>
+using namespace std;
+class student
+{
+private:
+int admno;
+char sname[20];
+float eng,math,science;
+float total;
+float ctotal()
+{
+return (eng+math+science);
+}
+public:
+void Takedata()
+{
+cout<<"Enter admission number ";
+cin>> admno;
+cout<<"Enter student name " ;
+cin>>(sname);
+cout<< "Enter marks in english, math, science ";
+cin>>eng>>math>>science;
+total=ctotal();
+}
+
+void Showdata()
+{
+cout<<"Admission number "<<admno<<"\nStudent name "<<sname<<"\nEnglish "
+<<eng<<"\nMath "<<math<<"\nScience "<<science<<"\nTotal "<<total;
+}
+};
+
+int main ()
+{
+student obj ;
+obj.Takedata();
+obj.Showdata();
+return 0;
+}
+
+PROGRAMM NO 1
+#include<iostream>
+using namespace std;
+class batsman
+{
+int bcode;
+char bname[20];
+int innings,notout,runs;
+int batavg;
+void calcavg()
+{
+batavg=runs/(innings-notout);
+}
+public :
+void readdata ();
+void displaydata();
+};
+void batsman::readdata ()
+{
+cout<<"Enter batsman code ";
+cin>> bcode;
+cout<<"Enter batsman name ";
+cin>>(bname);
+cout<<"enter innings,notout and runs ";
+cin>>innings>>notout>>runs;
+calcavg();
+}
+void batsman::displaydata()
+{
+cout<<"Batsman code "<<bcode<<"\nBatsman name "<<bname<<"\nInnings "<<innings
+<<"\nNot out "<<notout<<"\nRuns "<<runs<<"\nBatting Average "<<batavg;
+}
+int main()
+{
+batsman obj;
+obj.readdata();
+obj.displaydata();
+return 0;
+}
